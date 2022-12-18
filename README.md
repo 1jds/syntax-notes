@@ -1,2 +1,132 @@
 # Syntax-Notes
 Some Notes in Markdown about elements of Syntax for JavaScript and React
+
+
+
+
+## When to use brackets of different types or parentheses in JavaScript and React
+
+### In JavaScript
+- Use parentheses `( )` for creating or invoking functions
+  - The arguments being passed to a function go in here, unless you have an arrow function with just one parameter, in which case the parentheses can be omitted
+  
+        // Normal function:
+            function funky() {/*...function body...*/}
+            
+        // Normal arrow: 
+            const arrowFuncA = () => {/*...function body...*/}
+            
+        // One arg arrow - `()` can be omitted: 
+            const arrowFuncB = arg => {/*...function body...*/}
+            
+        // Normal arrow as callback:
+            const array = [1, 2, 3, 4]
+            array.map((item) => {return item * 2})
+            
+        // One arg arrow as callback - `()` can be omitted:
+            const array = [1, 2, 3, 4]
+            array.map(item => {return item * 2})
+            
+        // One arg arrow as callback with implicit return - `()` omitted, `{}` omitted
+            const array = [1, 2, 3, 4]
+            array.map(item => item * 2)
+  - For IIFEs (immediately invoked function expressions), there are additional parentheses. The whole function is written as normal, but then wrapped in `(...)` and another `( )` is attached (to invoke it?).
+  
+        (function () {
+          /*...function body...*/
+        })();
+
+        (() => {
+          /*...function body...*/
+        })();
+
+        (async () => {
+          /*...function body...*/
+        })();                                       //Source: MDN docs
+
+- When using the implicit return feature in arrow functions and trying to return an object literal, then the value you're trying to return needs to be wrapped in parentheses, so that JS doesn't interpret it as the start of your function body, as this example illustrates:
+        // You might want to take this and make it more concise using the implicit return as below:
+        
+            const objsArray = [{name: "Yuko"}, {name: "Steve"}, {name: "Yuvraj"}]
+            const usersAllNamedMax = objsArray.map(item => {
+                return {name: "Max"}
+            });     // Works
+        
+            const usersAllNamedMax = objsArray.map(item => {name: "Max"});   // Won't work
+        
+        // However, since `{}` are used for both object literals and function bodies,
+           you can't just write have an implicit return of {name: "Max"} as it will be treated 
+           as the function body. Wrapping the object you want to return within `()` solves 
+           this problem, since a `()` chunk must be an expression.
+        
+            const usersAllNamedMax = objsArray.map(item => ({name: "Max"}));   // Works
+
+
+### In React
+- Inside JSX, when wanting to insert regular JavaScript this is done by placing the 'interpolation' inside braces as below. The 'interpolation' in this example is `{username}`:
+
+        <>
+            <Header />
+            <main>
+                <h1>Your name is {username}</h1>
+            </main>
+            <Footer />
+        </>
+- When invoking a function or method inside of JSX, then the normal parentheses are omitted. For example, the invocation `handleFavourite` inside `onClick={handleFavourite}` doesn't have parentheses after it such as it would in normal JS `handleFavourite()`:
+
+        function favouriteStar(props) {
+            const [ isStarred, setIsStarred ] = React.useState(true);
+            
+            function handleFavourite() {
+                setIsStarred(prevState => !prevState)
+            }
+            
+            return (
+                <Star onClick={handleFavourite} />
+            )
+        };
+- Parentheses are used to group a multi-line return statement, especially when using a slab of JSX that is being returned from a component, so as to prevent troublesome automatic semicolon insertion, e.g.:
+
+        return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <input 
+                    placeholder="First Name"
+                    name="firstName" 
+                    value={inputData.firstName}
+                    onChange={handleChange}
+                />
+                <input 
+                    placeholder="Last Name"
+                    name="lastName" 
+                    value={inputData.lastName}
+                    onChange={handleChange}
+                />
+                <br />
+                <button>Add contact</button>
+            </form>
+        </>                                           //Source: Scrimba
+        )
+
+- When using in-line styles inside JSX, we need to use **doubled** `{ }` one set inside the other. This is because we need to first escape the JSX into JS, then we need to insert an object with our styles inside of it. This is not exactly the same as writing CSS styling, or normal in-line HTML styling, because we need to use camelCase. Also, if we give bare numbers and omit 'px' then React assumes that unit of measurement. An example of in-line styling:
+
+            function MyComponent(){
+                return <div style={{ color: 'blue', lineHeight : 10, padding: 20 }}>
+                    Inline Styled Component
+                </div>
+            }
+        
+        // This can then be made more readable by moving the styles object literal
+           outside of the JSX and inserting it via a variable as below:
+        
+            const myComponentStyle = {
+               color: 'blue',
+               lineHeight: 10,
+               padding: 20,
+            }
+            
+            function MyComponent(){
+                return <div style={myComponentStyle}>
+                    Inline Styled Component
+                </div>
+            }                               // Source: Pluralsight
