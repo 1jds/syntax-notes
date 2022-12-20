@@ -130,3 +130,34 @@ Some Notes in Markdown about elements of Syntax for JavaScript and React
                     Inline Styled Component
                 </div>
             }                               // Source: Pluralsight
+
+
+### In Redux
+- In his advanced React course on Scrimba, Bob Ziroll mentions that `const` is scoped to the nearest set of curly braces, and a lot of things can be enclosed in braces in JS. As such, when working with things like `switch` statements for reducers in Redux, it can be helpful to put braces around individual cases within the switch body so that the same `const` variable name can be reused. For example, in the following reducer `const arrCopy =` can be used for multiple switch cases as long as they are scoped with the curly braces. This is instead of doing something like `const arrCopy1`, `const arrCopy2`, &c. *(The reason for making a copy of the array, of course, is to maintain a pure function that doens't mutate the original array that was passed to the reducer.)*
+
+        function reducer(state = initialState, action) {
+            switch(action.type) {
+                case "CHANGE_COUNT":
+                    return {
+                        ...state,
+                        count: state.count + action.payload
+                    }
+                case "ADD_FAVORITE_THING":
+                    return {
+                        ...state,
+                        favoriteThings: [...state.favoriteThings, action.payload]
+                    }
+                case "REMOVE_FAVORITE_THING": {  <-- HERE
+                    const arrCopy = [...state.favoriteThings]  <-- IF NOT USING THE FILTER METHOD AS IN THE LINE BELOW, 
+                                                                   ONE COULD MAKE A COPY OF THE ARRAY BEFORE PLAYING AROUND WITH IT
+
+                    const updatedArr = state.favoriteThings.filter(thing => thing.toLowerCase() !== action.payload.toLowerCase())
+                    return {
+                        ...state,
+                        favoriteThings: updatedArr
+                    }
+                }  <-- AND HERE
+                default:
+                    return state
+            }
+        }
