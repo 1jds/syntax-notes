@@ -62,7 +62,7 @@ CREATE TABLE accounts (
 ### In JavaScript
 - Use parentheses `( )` for creating or invoking functions
   - The arguments being passed to a function go in here, unless you have an arrow function with just one parameter, in which case the parentheses can be omitted
-  
+```js
         // Normal function:
             function funky() {/*...function body...*/}
             
@@ -83,6 +83,7 @@ CREATE TABLE accounts (
         // One arg arrow as callback with implicit return - `()` omitted, `{}` omitted
             const array = [1, 2, 3, 4]
             array.map(item => item * 2)
+```
   - For IIFEs (immediately invoked function expressions), there are additional parentheses. The whole function is written as normal, but then wrapped in `(...)` and another `( )` is attached (to invoke it?).
   
         (function () {
