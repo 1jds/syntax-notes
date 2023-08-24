@@ -30,11 +30,13 @@ Others use upper_case_snake more routinely. In any case, it is a good idea to av
 ### Environment Variables
 For environment variable names the use of UPPERCASE is customary. For example, when storing API keys locally that will be gitignored, the variable name is in screaming snake case.  
 
-```// for Create React App applications
+```
+// for Create React App applications
 REACT_APP_API_KEY=A858372575838929292175243D
 
 // for Vite applications
-VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N```
+VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N
+```
 
 ### PostgreSQL
 The PostgreSQL documentation has this to say about naming things (e.g. tables, columns, &c.):
