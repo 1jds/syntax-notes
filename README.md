@@ -30,11 +30,13 @@ Others use upper_case_snake more routinely. In any case, it is a good idea to av
 ### Environment Variables
 For environment variable names the use of UPPERCASE is customary. For example, when storing API keys locally that will be gitignored, the variable name is in screaming snake case.  
 
+```sh
 	// for Create React App applications
 	REACT_APP_API_KEY=A858372575838929292175243D
 	
 	// for Vite applications
 	VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N
+```
 
 ### PostgreSQL
 The PostgreSQL documentation has this to say about naming things (e.g. tables, columns, &c.):
@@ -101,6 +103,8 @@ CREATE TABLE accounts (
 ```
 
 - When using the implicit return feature in arrow functions and trying to return an object literal, then the value you're trying to return needs to be wrapped in parentheses, so that JS doesn't interpret it as the start of your function body, as this example illustrates:
+
+```js
         // You might want to take this and make it more concise using the implicit return as below:
         
             const objsArray = [{name: "Yuko"}, {name: "Steve"}, {name: "Yuvraj"}]
@@ -116,11 +120,12 @@ CREATE TABLE accounts (
            this problem, since a `()` chunk must be an expression.
         
             const usersAllNamedMax = objsArray.map(item => ({name: "Max"}));   // Works
-
+```
 
 ### In React
 - Inside JSX, when wanting to insert regular JavaScript this is done by placing the 'interpolation' inside braces as below. The 'interpolation' in this example is `{username}`:
 
+```xhtml
         <>
             <Header />
             <main>
@@ -128,8 +133,11 @@ CREATE TABLE accounts (
             </main>
             <Footer />
         </>
+```
+
 - When invoking a function or method inside of JSX, then the normal parentheses are omitted. For example, the invocation `handleFavourite` inside `onClick={handleFavourite}` doesn't have parentheses after it such as it would in normal JS `handleFavourite()`:
 
+```js
         function favouriteStar(props) {
             const [ isStarred, setIsStarred ] = React.useState(true);
             
@@ -141,8 +149,11 @@ CREATE TABLE accounts (
                 <Star onClick={handleFavourite} />
             )
         };
+```
+  
 - Parentheses are used to group a multi-line return statement, especially when using a slab of JSX that is being returned from a component, so as to prevent troublesome automatic semicolon insertion, e.g.:
 
+```js
         return (
         <>
             <form onSubmit={handleSubmit}>
@@ -163,9 +174,11 @@ CREATE TABLE accounts (
             </form>
         </>                                           //Source: Scrimba
         )
+```
 
 - When using in-line styles inside JSX, we need to use **doubled** `{ }` one set inside the other. This is because we need to first escape the JSX into JS, then we need to insert an object with our styles inside of it. This is not exactly the same as writing CSS styling, or normal in-line HTML styling, because we need to use camelCase. Also, if we give bare numbers and omit 'px' then React assumes that unit of measurement. An example of in-line styling:
 
+```js
             function MyComponent(){
                 return <div style={{ color: 'blue', lineHeight : 10, padding: 20 }}>
                     Inline Styled Component
@@ -186,11 +199,12 @@ CREATE TABLE accounts (
                     Inline Styled Component
                 </div>
             }                               // Source: Pluralsight
-
+```
 
 ### In Redux
 - In his advanced React course on Scrimba, Bob Ziroll mentions that `const` is scoped to the nearest set of curly braces, and a lot of things can be enclosed in braces in JS. As such, when working with things like `switch` statements for reducers in Redux, it can be helpful to put braces around individual cases within the switch body so that the same `const` variable name can be reused. For example, in the following reducer `const arrCopy =` can be used for multiple switch cases as long as they are scoped with the curly braces. This is instead of doing something like `const arrCopy1`, `const arrCopy2`, &c. *(The reason for making a copy of the array, of course, is to maintain a pure function that doesn't mutate the original array that was passed to the reducer.)*
 
+```js
         function reducer(state = initialState, action) {
             switch(action.type) {
                 case "CHANGE_COUNT":
@@ -217,3 +231,4 @@ CREATE TABLE accounts (
                     return state
             }
         }
+```
