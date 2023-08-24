@@ -30,13 +30,11 @@ Others use upper_case_snake more routinely. In any case, it is a good idea to av
 ### Environment Variables
 For environment variable names the use of UPPERCASE is customary. For example, when storing API keys locally that will be gitignored, the variable name is in screaming snake case.  
 
-```
-// for Create React App applications
-REACT_APP_API_KEY=A858372575838929292175243D
-
-// for Vite applications
-VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N
-```
+	// for Create React App applications
+	REACT_APP_API_KEY=A858372575838929292175243D
+	
+	// for Vite applications
+	VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N
 
 ### PostgreSQL
 The PostgreSQL documentation has this to say about naming things (e.g. tables, columns, &c.):
@@ -47,14 +45,14 @@ Names containing other characters may be formed by surrounding them with double 
 Double quotes can also be used to protect a name that would otherwise be taken to be an SQL keyword. For example, IN is a keyword but "IN" is a name." See [HERE](https://www.postgresql.org/docs/7.0/syntax525.htm)
 
 Commands are generally written in UPPERCASE, e.g. this example taken from [www.postgresqltutorial.com](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-create-table/):
-```CREATE TABLE accounts (
-	user_id serial PRIMARY KEY,
-	username VARCHAR ( 50 ) UNIQUE NOT NULL,
-	password VARCHAR ( 50 ) NOT NULL,
-	email VARCHAR ( 255 ) UNIQUE NOT NULL,
-	created_on TIMESTAMP NOT NULL,
-        last_login TIMESTAMP 
-);```
+	CREATE TABLE accounts (
+		user_id serial PRIMARY KEY,
+		username VARCHAR ( 50 ) UNIQUE NOT NULL,
+		password VARCHAR ( 50 ) NOT NULL,
+		email VARCHAR ( 255 ) UNIQUE NOT NULL,
+		created_on TIMESTAMP NOT NULL,
+	        last_login TIMESTAMP 
+	);
 
 ## When to use brackets of different types or parentheses in JavaScript and React
 
