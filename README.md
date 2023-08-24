@@ -85,7 +85,7 @@ CREATE TABLE accounts (
             array.map(item => item * 2)
 ```
   - For IIFEs (immediately invoked function expressions), there are additional parentheses. The whole function is written as normal, but then wrapped in `(...)` and another `( )` is attached (to invoke it?).
-  
+```js
         (function () {
           /*...function body...*/
         })();
@@ -97,7 +97,7 @@ CREATE TABLE accounts (
         (async () => {
           /*...function body...*/
         })();                                       //Source: MDN docs
-
+```
 - When using the implicit return feature in arrow functions and trying to return an object literal, then the value you're trying to return needs to be wrapped in parentheses, so that JS doesn't interpret it as the start of your function body, as this example illustrates:
         // You might want to take this and make it more concise using the implicit return as below:
         
