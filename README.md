@@ -46,7 +46,7 @@ Double quotes can also be used to protect a name that would otherwise be taken t
 
 Commands are generally written in UPPERCASE, e.g. this example taken from [www.postgresqltutorial.com](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-create-table/):
 
-```
+```sql
 CREATE TABLE accounts (
   user_id serial PRIMARY KEY,
   username VARCHAR ( 50 ) UNIQUE NOT NULL,
