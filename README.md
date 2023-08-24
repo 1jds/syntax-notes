@@ -1,7 +1,32 @@
 # Syntax-Notes
 Some Notes in Markdown about elements of Syntax for JavaScript and React
 
+## Variable Naming Conventions and Capitalisation
 
+### In Javascript
+Javascript generally uses camelCase, but does have some exceptions:
+-   camelCase for normal variable names and function names
+-   start boolean variable names with 'is' or 'has' but still use camelCase
+-   constants can be UPPERCASE or SCREAMING_SNAKE_CASE. These would be used with `const`
+-   use PascalCase for the names of classes
+-   in React use PascalCase when naming components
+-   for more detail and examples, see [this helpful article](https://www.syncfusion.com/blogs/post/10-javascript-naming-conventions-every-developer-should-know.aspx)
+
+### In Python
+Python uses different conventions from Javascript
+- for general variables, use snake_case
+
+### In Bash
+
+
+### Environment Variables
+For environment variable names the use of UPPERCASE is customary. For example, when storing API keys locally that will be gitignored, the variable name is in screaming snake case.  
+
+`// for Create React App applications
+REACT_APP_API_KEY=A858372575838929292175243D
+
+// for Vite applications
+VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N`
 
 
 ## When to use brackets of different types or parentheses in JavaScript and React
