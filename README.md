@@ -13,21 +13,46 @@ Javascript generally uses camelCase, but does have some exceptions:
 -   for more detail and examples, see [this helpful article](https://www.syncfusion.com/blogs/post/10-javascript-naming-conventions-every-developer-should-know.aspx)
 
 ### In Python
-Python uses different conventions from Javascript
-- for general variables, use snake_case
+Python uses different conventions from Javascript. The pretty-much-official style guide [HERE](https://peps.python.org/pep-0008/#prescriptive-naming-conventions) appears to suggest the following:
+- "Modules should have short, all-lowercase names. Underscores can be used in the module name if it improves readability. Python packages should also have short, all-lowercase names, although the use of underscores is discouraged."
+- Class names should be in PascalCase.
+- Function and variable names should be lower_snake_case
+- Constants should be SCREAMING_SNAKE_CASE
+- There are other things to note in the docs linked above such as globals and type variables.
 
 ### In Bash
+There are differnet opinions about how to name variables and functions in Bash. The Google style guide, [HERE](https://google.github.io/styleguide/shellguide.html#naming-conventions), reccomends the following:
+- lower_snake_case for variables and function names
+- upper_snake_case for constants and environment variables
 
+Others use upper_case_snake more routinely. In any case, it is a good idea to avoid spaces on either side of the variable `=` operator, to avoid confusing the shell interpreter that the variable is a command in itself.
 
 ### Environment Variables
 For environment variable names the use of UPPERCASE is customary. For example, when storing API keys locally that will be gitignored, the variable name is in screaming snake case.  
 
-`// for Create React App applications
+```// for Create React App applications
 REACT_APP_API_KEY=A858372575838929292175243D
 
 // for Vite applications
-VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N`
+VITE_SOME_KEY=823849BHRJS582105657DBSEPQIJ3N```
 
+### PostgreSQL
+The PostgreSQL documentation has this to say about naming things (e.g. tables, columns, &c.):
+"Names in SQL must begin with a letter (a-z) or underscore (_). Subsequent characters in a name can be letters, digits (0-9), or underscores. The system uses no more than NAMEDATALEN-1 characters of a name; longer names can be written in queries, but they will be truncated. By default, NAMEDATALEN is 32 so the maximum name length is 31 (but at the time the system is built, NAMEDATALEN can be changed in src/include/postgres_ext.h).
+
+Names containing other characters may be formed by surrounding them with double quotes ("). For example, table or column names may contain otherwise disallowed characters such as spaces, ampersands, etc. if quoted. Quoting a name also makes it case-sensitive, whereas unquoted names are always folded to lower case. For example, the names FOO, foo and "foo" are considered the same by Postgres, but "Foo" is a different name.
+
+Double quotes can also be used to protect a name that would otherwise be taken to be an SQL keyword. For example, IN is a keyword but "IN" is a name." See [HERE](https://www.postgresql.org/docs/7.0/syntax525.htm)
+
+Commands are generally written in UPPERCASE, e.g. this example taken from [www.postgresqltutorial.com](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-create-table/):
+```CREATE TABLE accounts (
+	user_id serial PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+        last_login TIMESTAMP 
+);```
 
 ## When to use brackets of different types or parentheses in JavaScript and React
 
