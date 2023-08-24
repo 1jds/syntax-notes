@@ -45,14 +45,17 @@ Names containing other characters may be formed by surrounding them with double 
 Double quotes can also be used to protect a name that would otherwise be taken to be an SQL keyword. For example, IN is a keyword but "IN" is a name." See [HERE](https://www.postgresql.org/docs/7.0/syntax525.htm)
 
 Commands are generally written in UPPERCASE, e.g. this example taken from [www.postgresqltutorial.com](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-create-table/):
-	CREATE TABLE accounts (
- 	  user_id serial PRIMARY KEY,
-  	  username VARCHAR ( 50 ) UNIQUE NOT NULL,
-   	  password VARCHAR ( 50 ) NOT NULL,
-    	  email VARCHAR ( 255 ) UNIQUE NOT NULL,
-     	  created_on TIMESTAMP NOT NULL,
-      	  last_login TIMESTAMP
-        );
+
+```
+CREATE TABLE accounts (
+  user_id serial PRIMARY KEY,
+  username VARCHAR ( 50 ) UNIQUE NOT NULL,
+  password VARCHAR ( 50 ) NOT NULL,
+  email VARCHAR ( 255 ) UNIQUE NOT NULL,
+  created_on TIMESTAMP NOT NULL,
+  last_login TIMESTAMP
+);
+```
 
 ## When to use brackets of different types or parentheses in JavaScript and React
 
