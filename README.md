@@ -8,8 +8,31 @@ Some Notes in Markdown about elements of Syntax for JavaScript, React, and more.
 	```js
 	const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
  	```
-3. 
-Some of these derive from an excellent article by Reed Barger [HERE](https://www.freecodecamp.org/news/javascript-one-liners-to-use-in-every-project/)
+2. Or the first letter of every word:
+	```js
+	const capitalize = (str) => {
+	  const arr = str.trim().toLowerCase().split(" ");
+
+	  for (let i = 0; i < arr.length; i++) {
+	    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+	  }
+	
+	  return arr.join(" ");
+	};
+	
+	capitalize("hello, world!");
+	// Expected output: "Hello, World!"
+	```
+3. Select a random array index to select a random item from an array:
+	```js
+ 	const getRandomItem = (items) =>  items[Math.floor(Math.random() * items.length)];
+ 	```
+4.  Remove duplicate values in an array using a set:
+	```js
+ 	const removeDuplicates = (arr) => [...new Set(arr)];
+ 	```
+
+Note: The code blocks are derived from excellent articles by Reed Barger [HERE](https://www.freecodecamp.org/news/javascript-one-liners-to-use-in-every-project/), and Technophile [HERE](https://dev.to/dostonnabotov/10-helpful-javascript-utility-functions-35oc)
 
 ## Variable Naming Conventions and Capitalisation
 
