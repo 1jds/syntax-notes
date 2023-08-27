@@ -31,6 +31,18 @@ Some Notes in Markdown about elements of Syntax for JavaScript, React, and more.
 	```js
  	const removeDuplicates = (arr) => [...new Set(arr)];
  	```
+5.  Descructure `console.log` to avoid repeated typing:
+	```js
+ 	const { log } = console;
+	
+	log("Hello world!");
+	// Expected output: Hello world!
+	
+	// SAME AS //
+	
+	console.log("Hello world!");
+	// Expected output: Hello world!
+ 	```
 
 Note: The code blocks are derived from excellent articles by Reed Barger [HERE](https://www.freecodecamp.org/news/javascript-one-liners-to-use-in-every-project/), and Technophile [HERE](https://dev.to/dostonnabotov/10-helpful-javascript-utility-functions-35oc)
 
