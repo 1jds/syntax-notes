@@ -7,7 +7,7 @@ Some Notes in Markdown about elements of Syntax for JavaScript, React, and more.
 1. To capitalise the first letter of a string
 
 ```
-const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+		const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
 ```
 
 3. 
