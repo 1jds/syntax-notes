@@ -4,8 +4,11 @@ Some Notes in Markdown about elements of Syntax for JavaScript, React, and more.
 ## Useful Utility Functions
 
 ### In Javascript
-1. To capitalise the first letter of a string: `js const capitalize = (str) => \`${str.charAt(0).toUpperCase()}${str.slice(1)}\`;`
-2. 
+1. To capitalise the first letter of a string:
+	```js
+	const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+ 	```
+3. 
 Some of these derive from an excellent article by Reed Barger [HERE](https://www.freecodecamp.org/news/javascript-one-liners-to-use-in-every-project/)
 
 ## Variable Naming Conventions and Capitalisation
