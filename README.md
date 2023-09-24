@@ -307,7 +307,8 @@ return (
 
 ## JavaScript 'Pro Tricks' by Evelyn Taylor on 'Medium'
 
-1. Destructure with Aliases
+1. <b>Destructure with Aliases</b>
+
    This is fairly straightforward. It's just destructuring taken a tiny step further. For example:
 
    ```js
@@ -335,16 +336,96 @@ return (
 
    For information on destructuring, see [THIS](https://youtu.be/-vR3a11Wzt0?si=uePxtTm_xuGL8_Li) clip by Beau Carnes, who's fantastic at teaching
 
-2. Optional Chaining
+2. <b>Optional Chaining</b>
 
-3. Nullish Coalescing Operator
-4. Dynamic Object Keys
-5. Private Class Fields
-6. Promise.allSettled()
-7. The `globalThis` Object
-8. RegExp Match Indices
-9. `flatMap()`
-10. Logical Assignment Operators
+   As MDN defines it:
+
+   > The optional chaining `(?.)` operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
+   > <br><em>- MDN docs</em>
+
+   The kind of error which it would throw would be something like:
+
+   > Uncaught TypeError: Cannot read property <em>[name of property here]</em> of undefined at <em>[name of function or what-not]</em>
+
+   Here is some example code from MDN
+
+   ```js
+   const adventurer = {
+     name: "Alice",
+     cat: {
+       name: "Dinah",
+     },
+   };
+
+   const dogName = adventurer.dog?.name;
+   console.log(dogName);
+   // Expected output: undefined
+
+   console.log(adventurer.someNonExistentMethod?.());
+   // Expected output: undefined
+
+   const catName = adventurer.cat?.name;
+
+   console.log(catName);
+   // Expected output: 'Dinah'
+
+   const dogName = adventurer.dog.name;
+   console.log(dogName);
+   // Expected output: TypeError: Cannot read properties
+   // of undefined (reading 'name')
+   ```
+
+   Kyle from Web Dev Simplified notes that this could be achieved in other ways, but that this way is simpler
+
+3. <b>Nullish Coalescing Operator</b>
+
+   The Nullish Coalescing Operator is `??` . It works like `||` (or), but only applies to `null` or `undefined`.
+
+   'Nullish' = `null` or `undefined`
+
+   So, for example:
+
+   ```js
+   const personOneCash = 0;
+   const personTwoCash = 25;
+
+   const payingForLunch = personOneCash || personTwoCash;
+   console.log(payingForLunch); // 25 --> i.e. the person with $25
+
+   // The same result would be produced for any falsy value, such as:
+   const personOneCash = false;
+   const personOneCash = NaN;
+   const personOneCash = "";
+   const personOneCash = null;
+   const personOneCash = undefined;
+
+   // But with `??` we get '0' in all such cases except for the last two, viz.
+   const personOneCash = null;
+   const personOneCash = undefined;
+   ```
+
+4. <b>Dynamic Object Keys</b>
+
+   Object keys can be dynamically set using variables, for example.
+
+   > You can now use expressions to define dynamic object keys within object literals using square brackets.
+   >
+   > ```js
+   > const dynamicKey = "dynamicProperty";
+   > const obj = {
+   >   [dynamicKey]: "This is a dynamically named property",
+   > };
+   > console.log(obj.dynamicKey); // This is a dynamically named property
+   > ```
+   >
+   > <em>- Evelyn Taylor medium.com article</em>
+
+5. <b>Private Class Fields</b>
+6. <b>Promise.allSettled()</b>
+7. <b>The `globalThis` Object</b>
+8. <b>RegExp Match Indices</b>
+9. <b>`flatMap()`</b>
+10. <b>Logical Assignment Operators</b>
 
 ## Misc Useful Tidbits
 
@@ -444,3 +525,5 @@ With the 'script.js' file having something that requires the HTML to be loaded t
 const button = document.querySelector("button");
 button.style.backgroundColor = "pink";
 ```
+
+Note that this example and some of the others here are taken from [THIS](https://youtu.be/v2tJ3nzXh8I?si=h2ZsyWZtKO7o7DkX) YouTube video from Web Dev Simplified.
