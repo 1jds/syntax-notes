@@ -380,7 +380,8 @@ console.log(multiply(5)); // NaN
   const kyokumei = "hikoukigumo";
   const kashu = "Arai Yumi";
 
-  // the syntax is to use a string literal with `%c` elements (one or more), then CSS declared inside quotes (one set of quotes for each `%c`).
+  // the syntax is to use a string literal with `%c` elements (one or more), then CSS
+  // declared inside quotes (one set of quotes for each `%c`).
   log(
     `%cThe song title/kyokumei is ${kyokumei}, %cby ${kashu}`,
     "font-weight: bold; color: dodgerblue",
