@@ -279,13 +279,37 @@ CREATE TABLE accounts (
 ```
 
 ## JavaScript 'Pro Tricks' by Evelyn Taylor on 'Medium'
+
 1. Destructure with Aliases
-2. Optional Chaining
-3. Nullish Coalescing Operator
-4. Dynamic Object Keys
-5. Private Class Fields
-6. Promise.allSettled()
-7. The `globalThis` Object
-8. RegExp Match Indices
-9. `flatMap()`
-10. Logical Assignment Operators
+   This is fairly straightforward. It's just destructuring taken a tiny step further. For example:
+   ```js
+   // this is not the example, but see above for destructuring `console.log()` to make it quicker to type
+   const { log } = console
+   
+   // example starts here... we have a user object
+   const user = {
+     firstName: 'Jake',
+     lastName: 'Fitzgerald',
+     age: 105
+   }
+   // destructuring properties from that object into variables without anliases
+   const { firstName, lastName } = user
+
+   // destructuring properties from that object into variables and changing the names of the variables along the way too (i.e. uses aliases). We didn't rename 'age' because it was already short enough.
+   const { firstName: fName, lastName: lName, age } = user
+
+   // output values for the renamed constants
+   log(fName) // Jake
+   log(lName) // Fitzgerald
+   log(age) // 105
+   ```
+   
+3. Optional Chaining
+4. Nullish Coalescing Operator
+5. Dynamic Object Keys
+6. Private Class Fields
+7. Promise.allSettled()
+8. The `globalThis` Object
+9. RegExp Match Indices
+10. `flatMap()`
+11. Logical Assignment Operators
