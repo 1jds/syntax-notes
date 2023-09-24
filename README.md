@@ -375,7 +375,22 @@ return (
    // of undefined (reading 'name')
    ```
 
-   Kyle from Web Dev Simplified notes that this could be achieved in other ways, but that this way is simpler
+   Kyle from Web Dev Simplified notes that this could be achieved in other ways, but that this way is simpler - especially when we can't be sure whether not onyl the final property but also higher up levels of the nesting are present or not. For example, we could use conditionals, such as the following, if we're not sure whether the dog has a name assigned, or whether there is even a 'dog' property. But this starts to get messy. So the `?.` is cleaner:
+
+   ```js
+   if (adventurer.dog && adventurer.dog.name) {
+     const dogName = adventurer.dog.name;
+   }
+
+   // or
+   const getDogName = (obj) => {
+     if (!obj.dog || !obj.dog.name) {
+       return "Sorry, no dog found";
+     } else {
+       return obj.dog.name;
+     }
+   };
+   ```
 
 3. <b>Nullish Coalescing Operator</b>
 
