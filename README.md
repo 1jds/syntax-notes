@@ -295,7 +295,8 @@ CREATE TABLE accounts (
    // destructuring properties from that object into variables without anliases
    const { firstName, lastName } = user
 
-   // destructuring properties from that object into variables and changing the names of the variables along the way too (i.e. uses aliases). We didn't rename 'age' because it was already short enough.
+   // destructuring properties from that object into variables and changing the names of the variables
+   // along the way too (i.e. uses aliases). We didn't rename 'age' because it was already short enough.
    const { firstName: fName, lastName: lName, age } = user
 
    // output values for the renamed constants
@@ -303,13 +304,41 @@ CREATE TABLE accounts (
    log(lName) // Fitzgerald
    log(age) // 105
    ```
+   For information on destructuring, see [THIS](https://youtu.be/-vR3a11Wzt0?si=uePxtTm_xuGL8_Li) clip by Beau Carnes, who's fantastic at teaching
    
-3. Optional Chaining
-4. Nullish Coalescing Operator
-5. Dynamic Object Keys
-6. Private Class Fields
-7. Promise.allSettled()
-8. The `globalThis` Object
-9. RegExp Match Indices
-10. `flatMap()`
-11. Logical Assignment Operators
+2. Optional Chaining
+   
+
+3. Nullish Coalescing Operator
+4. Dynamic Object Keys
+5. Private Class Fields
+6. Promise.allSettled()
+7. The `globalThis` Object
+8. RegExp Match Indices
+9. `flatMap()`
+10. Logical Assignment Operators
+
+
+## Misc Useful Tidbits
+
+- When you want to have fallback default function parameters/arguments:
+```js
+// As MDN says: 'Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.'
+function multiply(a, b = 1) {
+  return a * b;
+}
+
+console.log(multiply(5, 2));
+// Expected output: 10
+
+console.log(multiply(5));
+// Expected output: 5
+
+// without the default parameter, we would see the following:
+function multiply(a, b) {
+  console.log("a equals...", a) // a equals... 5
+  console.log("b equals...", b) // b equals... undefined
+  return a * b;
+}
+console.log(multiply(5))  // NaN
+```
