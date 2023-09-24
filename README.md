@@ -348,7 +348,9 @@ return (
 
 ## Misc Useful Tidbits
 
-- When you want to have fallback default function parameters/arguments:
+### Default Parameters
+
+When you want to have fallback default function parameters/arguments:
 
 ```js
 // As MDN says: 'Default function parameters allow named parameters to be initialized
@@ -372,23 +374,73 @@ function multiply(a, b) {
 console.log(multiply(5)); // NaN
 ```
 
-- We can style console.logs using CSS. See [THIS]() video from Web Dev Simplified for more information.
+Now, in TypeScript we actually do the same thing, but we don't also give a type. Instead, the type of a default parameter is <em>inferred</em>. For example:
 
-  ```js
-  const { log } = console;
+```ts
+const userInfo = (name: string, accessLevel = "User"): string => {
+  return `Hello, ${name}! You're access level is ${accessLevel}.`;
+};
+console.log(userInfo("Bob", "Admin"));
+// "Hello, Bob! You're access level is Admin"
 
-  const kyokumei = "hikoukigumo";
-  const kashu = "Arai Yumi";
+console.log(userInfo("Jake"));
+// "Hello, Jake! You're access level is User."
 
-  // the syntax is to use a string literal with `%c` elements (one or more), then CSS
-  // declared inside quotes (one set of quotes for each `%c`).
-  log(
-    `%cThe song title/kyokumei is ${kyokumei}, %cby ${kashu}`,
-    "font-weight: bold; color: dodgerblue",
-    "color: pink; font-style: italic"
-  );
-  ```
-
+console.log(userInfo("Susan", undefined));
+// "Hello, Susan! You're access level is User."
 ```
 
+### CSS Style `Console.log`
+
+We can style console.logs using CSS. See [THIS]() video from Web Dev Simplified for more information.
+
+```js
+const { log } = console
+
+const kyokumei = "hikoukigumo"
+const kashu = "Arai Yumi;
+
+// the syntax is to use a string literal with `%c` elements (one or more), then CSS
+// declared inside quotes (one set of quotes for each `%c`).
+log(
+  `%cThe song title/kyokumei is ${kyokumei}, %cby ${kashu}`,
+  "font-weight: bold; color: dodgerblue",
+  "color: pink; font-style: italic"
+)
+```
+
+### The `defer` keyword
+
+We can use the `defer` keyword inside script tags in the `<head>` of an HTML file to make the browser download the JavaScript before the rest of the HTML, but then hold off on the execution of that script until the HTML is loaded. This prevents the need for placing the `<script>` at the end of the `<body>`. For example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <button>Hello</button>
+  </body>
+</html>
+```
+
+Versus
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <body>
+    <button>Hello</button>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+With the 'script.js' file having something that requires the HTML to be loaded to work. For example:
+
+```js
+const button = document.querySelector("button");
+button.style.backgroundColor = "pink";
 ```
