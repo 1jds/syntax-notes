@@ -277,3 +277,15 @@ CREATE TABLE accounts (
             }
         }
 ```
+
+## JavaScript 'Pro Tricks' by Evelyn Taylor on 'Medium'
+1. Destructure with Aliases
+2. Optional Chaining
+3. Nullish Coalescing Operator
+4. Dynamic Object Keys
+5. Private Class Fields
+6. Promise.allSettled()
+7. The `globalThis` Object
+8. RegExp Match Indices
+9. `flatMap()`
+10. Logical Assignment Operators
