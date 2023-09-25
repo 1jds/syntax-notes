@@ -414,7 +414,8 @@ return (
    const personOneCash = null;
    const personOneCash = undefined;
 
-   // But with `??` we get '0' in all such cases except for the last two, viz.
+   // But with `??` we get '0', that is, the person with $0
+   // in all such cases except for the last two, viz.
    const personOneCash = null;
    const personOneCash = undefined;
    ```
@@ -436,6 +437,57 @@ return (
    > <em>- Evelyn Taylor medium.com article</em>
 
 5. <b>Private Class Fields</b>
+
+   We can now create private fields and methods on classes using `#` as a prefix. For example:
+
+   ```js
+   class User {
+     firstName;
+     #lastName;
+     #age;
+
+     constructor(firstName, lastName, age) {
+       this.firstName = firstName;
+       this.#lastName = lastName;
+       this.#age = age;
+     }
+
+     getFullName() {
+       return `Hello, ${this.firstName} ${this.#lastName}`;
+     }
+
+     #getAge() {
+       return `${this.firstName} is ${this.#age} years old`;
+     }
+
+     getUserAge() {
+       return this.#getAge();
+     }
+   }
+
+   const JessUser = new User("Jess", "Sharp", 35);
+
+   // accessing values
+   console.log(JessUser.firstName);
+   // no error
+   console.log(JessUser.#lastName);
+   // throws an error. Can't access value outside of class
+   console.log(JessUser.#age);
+   // throws an error. Can't access value outside of class
+
+   // altering values and calling methods
+   JessUser.#age = 25;
+   // throws an error. Cannot alter this value from outside the class
+   JessUser.#lastName = "Staples";
+   // throws an error
+   JessUser.firstName = "Jane";
+   // no error. When logged, outputs 'Jane' instead of 'Jess'
+   JessUser.#getAge();
+   // throws an error. Cannot call this method from outside the class
+   JessUser.getUserAge();
+   // no error. Can call non-private methods
+   ```
+
 6. <b>Promise.allSettled()</b>
 7. <b>The `globalThis` Object</b>
 8. <b>RegExp Match Indices</b>
