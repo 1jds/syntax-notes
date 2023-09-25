@@ -446,7 +446,7 @@ return (
      #lastName;
      #age;
 
-     constructor(firstName, lastName, age) {
+     constructor(firstName = "Jane", lastName = "Doe", age = 25) {
        this.firstName = firstName;
        this.#lastName = lastName;
        this.#age = age;
@@ -487,6 +487,8 @@ return (
    JessUser.getUserAge();
    // no error. Can call non-private methods
    ```
+
+   There are some limitations and 'gotchas' with these. The following [MDN information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) discusses these among other things.
 
 6. <b>Promise.allSettled()</b>
 7. <b>The `globalThis` Object</b>
