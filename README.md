@@ -305,7 +305,7 @@ return (
         }
 ```
 
-## JavaScript 'Pro Tricks' by Evelyn Taylor on 'Medium'
+## JavaScript 'Pro Tricks' by Evelyn Taylor on <em>Medium</em>
 
 1. <b>Destructure with Aliases</b>
 
