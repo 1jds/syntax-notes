@@ -492,6 +492,29 @@ return (
 
 6. <b>Promise.allSettled()</b>
 7. <b>The `globalThis` Object</b>
+
+   Instead of having to use different keywords to refer to the global scope/object in different contexts (e.g. browswers, Node.js, Web Workers), one can now use `globalThis` accross contexts. This could replace the following (although there might still be reasons for using those):
+
+   - `window` (browsers)
+   - `frames` (browsers)
+   - `this` (browsers - <em>can be used at the top level in browsers to reference the global object</em>)
+   - `self` (Web Workers API)
+   - `global` (Node.js)
+
+   One example of this switch-out could include the following in JavaScript for a browser:
+
+   ```js
+   function showMessage(message) {
+     window.alert(message);
+   }
+
+   function showMessage(message) {
+     globalThis.alert(message);
+   }
+   ```
+
+   > <em>Source: [This article by Dwayne Charrington](https://ilikekillnerds.com/2023/02/why-you-should-be-using-globalthis-instead-of-window-in-your-javascript-code/)</em>
+
 8. <b>RegExp Match Indices</b>
 9. <b>`flatMap()`</b>
 10. <b>Logical Assignment Operators</b>
