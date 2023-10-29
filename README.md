@@ -27,16 +27,23 @@ Some Notes in Markdown about elements of Syntax for JavaScript, React, and more.
    // Expected output: "Hello, World!"
    ```
 
-3. Select a random array index to select a random item from an array:
+   This could also be done something like this:
+   ```js
+   capitaliseWords(string) {
+     return string.replace(/\b\w/g, (match) => match.toUpperCase());
+   }
+   ```
+
+4. Select a random array index to select a random item from an array:
    ```js
    const getRandomItem = (items) =>
      items[Math.floor(Math.random() * items.length)];
    ```
-4. Remove duplicate values in an array using a set:
+5. Remove duplicate values in an array using a set:
    ```js
    const removeDuplicates = (arr) => [...new Set(arr)];
    ```
-5. Descructure `console.log` to avoid repeated typing:
+6. Descructure `console.log` to avoid repeated typing:
 
    ```js
    const { log } = console;
