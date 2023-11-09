@@ -626,3 +626,24 @@ button.style.backgroundColor = "pink";
 ```
 
 Note that this example and some of the others here are taken from [THIS](https://youtu.be/v2tJ3nzXh8I?si=h2ZsyWZtKO7o7DkX) YouTube video from Web Dev Simplified.
+
+
+## Notes from 'Git Hidden Gems' by Enrico Campidoglio
+
+### Pretty Logs
+
+- Normal log `git log`
+- Pretty log gives options, e.g. `git log --pretty='%s'` prints only the commit message
+- A more complex example: `git log --pretty='%C(red)%h%Creset%C(yellow)%d%Creset %s %C(cyan)(%ar)%Creset'`
+- Use an alias to avoid having to retype all of this multiple times, e.g.: `git config --global alias.lg "log --pretty='%C(red)%h%Creset%C(yellow)%d%Creset %s %C(cyan)(%ar)%Creset'"`
+
+### Pretty Diffs
+
+- Normal diff example = `git diff HEAD^ HEAD`. The result is pretty boring. One can get a different output with a different 'pager'.
+- E.g. `git config --global core.pager delta`
+- This different pager will give a more readable output.
+- Produced by [Dan Davison](https://github.com/dandavison/delta)
+
+### Staging
+
+- Make commits which are 'semantically cohesive', i.e. each commit should represent one logical change. 
