@@ -646,4 +646,5 @@ Note that this example and some of the others here are taken from [THIS](https:/
 
 ### Staging
 
-- Make commits which are 'semantically cohesive', i.e. each commit should represent one logical change. 
+- Make commits which are 'semantically cohesive', i.e. each commit should represent one logical change.
+- Further content to be added here...
