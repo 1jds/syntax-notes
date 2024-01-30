@@ -2,6 +2,21 @@
 
 Some Notes in Markdown about elements of Syntax for JavaScript, React, and more.
 
+## Quirky Gotchas
+
+1. You can't use `++` (I'm going to just call this the increment operator) in an assignment statement as you would expect. For example:
+   ```js
+   let a = 1
+   let b = a++
+   console.log(a, b) // 2 1
+   ```
+   Compare this with:
+   ```js
+   let a = 1
+   let b = a + 1
+   console.log(a, b) // 1 2
+   ```
+
 ## Useful Utility Functions
 
 ### In Javascript
